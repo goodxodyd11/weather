@@ -1,7 +1,7 @@
-import React from 'react';
+﻿import React from 'react';
 import Icon from './Icon';
 
-const API_WEATHER = 'http://demo6468405.mockable.io/weather-crawlers/current-weathers/by-city-name';
+const API_WEATHER = 'http://localhost:8080/weather-crawler/current-weathers/by-city-name';
 
 class TodayWeather extends React.Component {
   state = {
@@ -10,7 +10,7 @@ class TodayWeather extends React.Component {
 
   async componentDidMount() {
     // const { cityId } = this.props.match.params;
-    const cityId = 'Daejeon';
+    const { cityId } = this.props.match.params;
     const api = `${API_WEATHER}/${cityId}`;
 
     const weather = await fetch(api)
@@ -18,7 +18,7 @@ class TodayWeather extends React.Component {
       .then(data => data);
 
     this.setState({
-      weather
+      weather: weather
     });
   }
 
